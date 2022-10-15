@@ -3,6 +3,9 @@ import os
 import pathlib
 
 from typing import NamedTuple
+from point_mutations import find_hamming_distance
+from gc_content import find_dna_with_max_gc_content
+from rna_to_protein_translation import translate_rna_to_protein
 
 class Args(NamedTuple):
     dna: str
@@ -73,3 +76,9 @@ if __name__ == '__main__':
     in_data = read_input('prob_3_input.txt')
     print(get_compl_strand(in_data))
 
+    print(f'Hamming Distance -> ', find_hamming_distance('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCCT'))
+
+    dna_with_max_gc_content = find_dna_with_max_gc_content()
+
+    print('Max GC Content Genome, ID: {0[1]}, GC Content: {0[0]:0.3f}'.format(dna_with_max_gc_content))
+    print(translate_rna_to_protein('AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'))
